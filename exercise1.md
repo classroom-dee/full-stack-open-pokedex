@@ -1,0 +1,9 @@
+### 1. 
+I'll use two of my frequently used languages aside from JS/TS in the answer.
+Python: Python has Ruff for linting, Pytest for testing among other things. But Python does not build or compile a binary in a traditional sense, it parses your code (*.py file), compiles it to bytecode in memory and then a virtual machine executes the bytecode. The bytecode is output to a file if cache is enabled, under \__pycache__ directory. For actual packaging though, it has some external tools to build wheels/packages(installable) or publish to PyPI(which is the package depot of Python). These include setuptools, build, etc.
+Rust: Clippy as linter which is official yet third party and fmt for formating. Rust has built-in components for testing and building, which are cargo build and cargo test.
+All these can be used in conjunction with language-agnostic hooks such as pre-commit, which is a python binary itself, to facilitate on-save-linting/testing and on-commit-linting/testing
+### 2.
+For self hosted options such as Jenkins, you have GitLab Runner which also has a hosted counterpart (GitLab CI/CD). For a Kubernetes native environment you could opt for Argo too. Other than that, all the major cloud providers offer some form of CI/CD services such as AWS CodeBuild, Azure Pipelines(windows + .NET centric) and Cloud Build(containers centeric) from GCP, which feel less detached and more deeply integrated to cloud.
+### 3.
+It depends on your team branching strategy, what your budget allows, the amount of workload on CI, where the final deployment lives, and so on. This will determine whether to use cloud native/self-hosted solutions, to use pull/push based pipeline and to use the tools partially or entirely in the process.
