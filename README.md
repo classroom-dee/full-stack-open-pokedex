@@ -22,3 +22,5 @@ Start by running `npm install` inside the project folder
 - [11.4](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.4)
 - [11.5 Linting Workflow](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.5)
 - [11.6 Fix the Code](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.6)
+- [11.7 Building and testing](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.7)
+
