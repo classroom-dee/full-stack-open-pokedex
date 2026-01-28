@@ -20,3 +20,4 @@ Start by running `npm install` inside the project folder
 - [11.1 - 11.2](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.2)
 - [11.3](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.3)
 - [11.4](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.4)
+- [11.5](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.5)
