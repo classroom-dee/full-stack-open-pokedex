@@ -1,4 +1,4 @@
-const { test, describe, expect, beforeEach } = require('@playwright/test')
+const { test, describe, expect, beforeEach } = require('@playwright/test') // no-unused-vars
 
 describe('Pokedex', () => {
   test('front page can be opened', async ({ page }) => {
