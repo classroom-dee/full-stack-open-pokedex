@@ -1,27 +1,21 @@
-const { test, describe, expect, beforeEach } = require('@playwright/test') // no-unused-vars
+const { test, describe, expect } = require('@playwright/test')
 
 describe('Pokedex', () => {
+  // beforeEach('Go to page first', async () => {
+  //   await page.goto('')
+  // })
   test('front page can be opened', async ({ page }) => {
     await page.goto('')
     await expect(page.getByText('ivysaur')).toBeVisible()
     await expect(page.getByText('Pokémon and Pokémon character names are trademarks of Nintendo.')).toBeVisible()
+  }),
+
+  test('page shows correct content', async ({ page }) => {
+    await page.goto('/pokemon/vulpix')
+    await expect(page.getByText('vulpix')).toBeVisible()
+    await expect(page.getByText('Drought')).toBeVisible()
+    await expect(page.getByText('Flash Fire')).toBeVisible()
   })
 })
 
 
-// test('has title', async ({ page }) => {
-//   await page.goto('https://playwright.dev/');
-
-//   // Expect a title "to contain" a substring.
-//   await expect(page).toHaveTitle(/Playwright/);
-// });
-
-// test('get started link', async ({ page }) => {
-//   await page.goto('https://playwright.dev/');
-
-//   // Click the get started link.
-//   await page.getByRole('link', { name: 'Get started' }).click();
-
-//   // Expects page to have a heading with the name of Installation.
-//   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
-// });
