@@ -42,9 +42,14 @@ jobs:
       - name: Run Playwright tests
         run: npm run test:e2e
         
+      # Output test report
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+      
+      - name: Trigger deployment
+        run: curl ${{ secrets.RENDER_DEPLOY_HOOK }}
+        

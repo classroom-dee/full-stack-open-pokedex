@@ -25,5 +25,5 @@ Start by running `npm install` inside the project folder
 - [11.7 Building and testing](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.7)
 - [11.8 Back to green](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.8)
 - [11.9 Simple end-to-end tests](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.9)
-- [11.10 Render](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.10)
+- [11.10 - 11.12 Render](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.12)
 
