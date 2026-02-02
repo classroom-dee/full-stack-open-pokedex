@@ -11,12 +11,12 @@ app.get('/version', (req, res) => {
   // 2: the one with deploy hook
   // 3: the non-healthy one
   // 4: back to the correct one
-  res.send('3') // change this string to ensure a new version deployed
+  res.send('4') // change this string to ensure a new version deployed
 })
 
 app.get('/healthz', (req, res) => {
   // eslint-disable-next-line no-constant-condition
-  if (true) throw('Unhealthy bumpkin')
+  // if (true) throw('Unhealthy bumpkin')
   res.status(200).send('ok')
 })
 
