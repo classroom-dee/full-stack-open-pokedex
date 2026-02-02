@@ -1,10 +1,6 @@
-# Full Stack open CI/CD
+![CI](https://github.com/classroom-dee/full-stack-open-pokedex/actions/workflows/pipeline.yaml/badge.svg)
 
-This repository is used for the CI/CD module of the Full stack open course
-
-Fork the repository to complete course exercises
-
-**Use `nvm use 16` first**
+**Use `nvm use 20` first**
 
 ## Commands
 
@@ -26,4 +22,5 @@ Start by running `npm install` inside the project folder
 - [11.8 Back to green](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.8)
 - [11.9 Simple end-to-end tests](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.9)
 - [11.10 - 11.12 Render](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.12)
+- [11.13 Pull request](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.13)
 
