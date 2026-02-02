@@ -1,9 +1,9 @@
 name: Deployment pipeline
 
 on:
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
   pull_request:
     branches: [main]
     types: [opened, synchronize]
@@ -11,6 +11,7 @@ on:
 jobs:
 
   CI:
+    if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-24.04
     steps:
       # Cleanliness is ALL
@@ -54,7 +55,7 @@ jobs:
           retention-days: 30
 
   deployment:
-    if: ${{ github.event_name == 'push' }}
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-24.04
     steps:
       - name: Trigger deployment
