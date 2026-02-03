@@ -64,7 +64,7 @@ jobs:
       
   
   tag_release:
-    needs: [CI, deployment]
+    needs: [deployment]
     if: ${{ github.event.pull_request.merged == true }}
     runs-on: ubuntu-24.04
     permissions:
