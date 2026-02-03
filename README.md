@@ -24,4 +24,5 @@ Start by running `npm install` inside the project folder
 - [11.10 - 11.12 Render](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.12)
 - [11.13 Pull request](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.13)
 - [11.14 Run deployment step only for the main branch](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.14)
+- [11.15 Adding versioning](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.15.0)
 

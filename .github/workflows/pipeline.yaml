@@ -58,6 +58,22 @@ jobs:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-24.04
     steps:
+      # Deploy to Render
       - name: Trigger deployment
         run: curl ${{ secrets.RENDER_DEPLOY_HOOK }}
-        
+      
+  
+  tag_release:
+    needs: [CI, deployment]
+    if: ${{ github.event.pull_request.merged == true }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      # Versioning
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.75.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
+          INITIAL_VERSION: 11.14.0
