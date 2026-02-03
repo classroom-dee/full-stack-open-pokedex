@@ -70,6 +70,10 @@ jobs:
     permissions:
       contents: write
     steps:
+      # Checkout is needed for each job scope! -> no sharing fs
+      - name: Checkout tree
+        uses: actions/checkout@v4
+
       # Versioning
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.75.0
