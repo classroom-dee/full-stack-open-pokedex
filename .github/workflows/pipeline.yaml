@@ -8,8 +8,9 @@ on:
     branches: [main]
     types: [opened, synchronize]
 
-env:
-  IS_MAIN_PUSH: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+# job level if: is evaluated before env. SO NO...
+# env:
+#   IS_MAIN_PUSH: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
 
 jobs:
   CI:
@@ -59,7 +60,7 @@ jobs:
   deployment:
     if: >
       ${{ 
-        env.IS_MAIN_PUSH == 'true' && 
+        github.event_name == 'push' && github.ref == 'refs/heads/main' && 
         !contains(
           toLower(join(toJson(github.event.commits.*.message), ' ')), 
           '#skip'
