@@ -8,8 +8,11 @@ on:
     branches: [main]
     types: [opened, synchronize]
 
-jobs:
+# job level if: is evaluated before env. SO NO...
+# env:
+#   IS_MAIN_PUSH: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
 
+jobs:
   CI:
     if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-24.04
@@ -55,16 +58,43 @@ jobs:
           retention-days: 30
 
   deployment:
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    if: >
+      ${{ 
+        github.event_name == 'push' && github.ref == 'refs/heads/main' && 
+        !contains(
+          join(toJson(github.event.commits.*.message), ' '), 
+          '#skip'
+        ) 
+      }}
     runs-on: ubuntu-24.04
     steps:
+      # print out some git related stuff
+      - name: github context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"toJson(github.event.commits.*.message) 
+      - name: commits
+        env:
+          COMMITS: ${{ toJson(github.event.commits) }}
+        run: echo "$COMMITS"
+      - name: commit messages
+        env:
+          COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
+        run: echo "$COMMIT_MESSAGES"
+
       # Deploy to Render
       - name: Trigger deployment
         run: curl ${{ secrets.RENDER_DEPLOY_HOOK }}
-      
   
   tag_release:
     needs: [deployment]
+    if: >
+      ${{ 
+        !contains(
+          join(toJson(github.event.commits.*.message), ' '), 
+          '#skip'
+        ) 
+      }}
     # if: ${{ github.event.pull_request.merged == true }}
     runs-on: ubuntu-24.04
     permissions:
