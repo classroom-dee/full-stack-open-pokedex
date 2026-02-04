@@ -62,7 +62,7 @@ jobs:
       ${{ 
         github.event_name == 'push' && github.ref == 'refs/heads/main' && 
         !contains(
-          toLower(join(toJson(github.event.commits.*.message), ' ')), 
+          lower(join(toJson(github.event.commits.*.message), ' ')), 
           '#skip'
         ) 
       }}
@@ -91,7 +91,7 @@ jobs:
     if: >
       ${{ 
         !contains(
-          toLower(join(toJson(github.event.commits.*.message), ' ')), 
+          lower(join(toJson(github.event.commits.*.message), ' ')), 
           '#skip'
         ) 
       }}
