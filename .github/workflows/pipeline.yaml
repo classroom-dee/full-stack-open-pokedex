@@ -14,7 +14,7 @@ on:
 
 jobs:
   CI:
-    if: ${{ github.event_name == 'pull_request' }}
+    if: ${{ github.event_name == 'pull_request' && !contains(join(toJson(github.event.commits.*.message), ' '), '#no-ci') }}
     runs-on: ubuntu-24.04
     steps:
       # Cleanliness is ALL
@@ -123,7 +123,7 @@ jobs:
                 ],
                 "footer": { "text": "Severity: Info" }
               ]
-            }'
+            }' \
             ${{ secrets.DISCORD_WEBHOOK }}
 
       - name: notify on deployment failure
@@ -143,7 +143,7 @@ jobs:
                 ],
                 "footer": { "text": "Severity: Error" }
               ]
-            }'
+            }' \
             ${{ secrets.DISCORD_WEBHOOK }}
 
       # THE APP DON'T RECOGNIZE THE WEBHOOK URL
