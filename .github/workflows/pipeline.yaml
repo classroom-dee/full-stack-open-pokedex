@@ -103,47 +103,60 @@ jobs:
 
   notify:
     runs-on: ubuntu-24.04
-    needs: [deployment, tag_release]
+    needs: [deployment]
     if: ${{ always() }}
     steps:
       - name: notify on deployment success
         if: ${{ needs.deployment.result == 'success' }}
-        uses: rjstone/discord-webhook-notify@v2
-        with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          username: Pikku Myy
-          avatarUrl: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.7SAFV037V1-ezvkAhffIWgHaHa%3Fpid%3DApi&f=1&ipt=f93d9e58395bec6151fbecf4165b5556a514a4aef44fc9ece95da62773c178bf&ipo=images
-          text: Successfully deployed!
-          flags: SuppressNotifications # don't disturb others when testing
-          severity: info
-          color: '#2bab34'
-          title: Successfully deployed!
-          description: "to [markdown test](https://some.url) by **someone**"
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+            -d '{
+              "username": "Pikku Myy",
+              "avatar_url": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.7SAFV037V1-ezvkAhffIWgHaHa%3Fpid%3DApi&f=1&ipt=f93d9e58395bec6151fbecf4165b5556a514a4aef44fc9ece95da62773c178bf&ipo=images",
+              "embeds": [
+                "title": "Successfully deployed!",
+                "description": "to [markdown test](https://some.url) by **someone**",
+                "color": 65280,
+                "fields": : [
+                  { "name": "Status", "value": "✅", "inline": true },
+                  { "name": "Repository", "value": "${{ github.repository }}", "inline": true }
+                ],
+                "footer": { "text": "Severity: Info" }
+              ]
+            }'
+            ${{ secrets.DISCORD_WEBHOOK }}
 
       - name: notify on deployment failure
-        uses: rjstone/discord-webhook-notify@v2
         if: ${{ needs.deployment.result == 'failure' }}
-        with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          username: Pikku Myy
-          avatarUrl: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.7SAFV037V1-ezvkAhffIWgHaHa%3Fpid%3DApi&f=1&ipt=f93d9e58395bec6151fbecf4165b5556a514a4aef44fc9ece95da62773c178bf&ipo=images
-          text: Deployment failed!
-          flags: SuppressNotifications
-          severity: error
-          color: '#f26955'
-          title: Deployment failed!
-          description: "Check [here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) for the run result"
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+            -d '{
+              "username": "Pikku Myy",
+              "avatar_url": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.7SAFV037V1-ezvkAhffIWgHaHa%3Fpid%3DApi&f=1&ipt=f93d9e58395bec6151fbecf4165b5556a514a4aef44fc9ece95da62773c178bf&ipo=images",
+              "embeds": [
+                "title": "Deployment failed!",
+                "description": "Check [here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) for the run result",
+                "color": 16711680,
+                "fields": : [
+                  { "name": "Status", "value": "❌", "inline": true },
+                  { "name": "Repository", "value": "${{ github.repository }}", "inline": true }
+                ],
+                "footer": { "text": "Severity: Error" }
+              ]
+            }'
+            ${{ secrets.DISCORD_WEBHOOK }}
 
-      - name: notify on tag_release failure
-        uses: rjstone/discord-webhook-notify@v2
-        if: ${{ needs.tag_release.result == 'failure' }}
-        with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          username: Pikku Myy
-          avatarUrl: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.7SAFV037V1-ezvkAhffIWgHaHa%3Fpid%3DApi&f=1&ipt=f93d9e58395bec6151fbecf4165b5556a514a4aef44fc9ece95da62773c178bf&ipo=images
-          text: Tag was not released!
-          flags: SuppressNotifications
-          severity: warn
-          color: '#ffa500'
-          title: Tag was not released!
-          description: "Check [here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) for the run result"
+      # THE APP DON'T RECOGNIZE THE WEBHOOK URL
+      # - name: notify on tag_release failure
+      #   uses: rjstone/discord-webhook-notify@v2
+      #   if: ${{ needs.tag_release.result == 'failure' }}
+      #   with:
+      #     webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+      #     username: Pikku Myy
+      #     avatarUrl: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.7SAFV037V1-ezvkAhffIWgHaHa%3Fpid%3DApi&f=1&ipt=f93d9e58395bec6151fbecf4165b5556a514a4aef44fc9ece95da62773c178bf&ipo=images
+      #     text: Tag was not released!
+      #     flags: SuppressNotifications
+      #     severity: warn
+      #     color: '#ffa500'
+      #     title: Tag was not released!
+      #     description: "Check [here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) for the run result"
