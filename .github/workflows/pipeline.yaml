@@ -114,7 +114,7 @@ jobs:
           username: Pikku Myy
           avatarUrl: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.7SAFV037V1-ezvkAhffIWgHaHa%3Fpid%3DApi&f=1&ipt=f93d9e58395bec6151fbecf4165b5556a514a4aef44fc9ece95da62773c178bf&ipo=images
           text: Successfully deployed!
-          flag: SuppressNotifications # don't disturb others when testing
+          flags: SuppressNotifications # don't disturb others when testing
           severity: info
           color: '#2bab34'
           title: Successfully deployed!
@@ -128,7 +128,7 @@ jobs:
           username: Pikku Myy
           avatarUrl: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.7SAFV037V1-ezvkAhffIWgHaHa%3Fpid%3DApi&f=1&ipt=f93d9e58395bec6151fbecf4165b5556a514a4aef44fc9ece95da62773c178bf&ipo=images
           text: Deployment failed!
-          flag: SuppressNotifications
+          flags: SuppressNotifications
           severity: error
           color: '#f26955'
           title: Deployment failed!
@@ -142,7 +142,7 @@ jobs:
           username: Pikku Myy
           avatarUrl: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.7SAFV037V1-ezvkAhffIWgHaHa%3Fpid%3DApi&f=1&ipt=f93d9e58395bec6151fbecf4165b5556a514a4aef44fc9ece95da62773c178bf&ipo=images
           text: Tag was not released!
-          flag: SuppressNotifications
+          flags: SuppressNotifications
           severity: warn
           color: '#ffa500'
           title: Tag was not released!
