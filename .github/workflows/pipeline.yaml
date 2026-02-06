@@ -107,7 +107,7 @@ jobs:
     if: ${{ always() }}
     steps:
       - name: notify on deployment success
-        if: ${{ needs.deployment.result == 'success') }}
+        if: ${{ needs.deployment.result == 'success' }}
         uses: rjstone/discord-webhook-notify@v2
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
@@ -122,7 +122,7 @@ jobs:
 
       - name: notify on deployment failure
         uses: rjstone/discord-webhook-notify@v2
-        if: ${{ needs.deployment.result == 'failure') }}
+        if: ${{ needs.deployment.result == 'failure' }}
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           username: Pikku Myy
@@ -136,7 +136,7 @@ jobs:
 
       - name: notify on tag_release failure
         uses: rjstone/discord-webhook-notify@v2
-        if: ${{ needs.tag_release.result == 'failure') }}
+        if: ${{ needs.tag_release.result == 'failure' }}
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           username: Pikku Myy
