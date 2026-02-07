@@ -28,4 +28,5 @@ Start by running `npm install` inside the project folder
 - [11.16 Skipping a commit for tagging and deployment](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.16)
 - [11.17 Adding protection to your main branch](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.17)
 - [11.18 Build success/failure notification action](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.18)
+- [11.19 Periodic health check](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.19)
 
