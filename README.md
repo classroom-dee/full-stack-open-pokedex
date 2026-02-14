@@ -29,4 +29,5 @@ Start by running `npm install` inside the project folder
 - [11.17 Adding protection to your main branch](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.17)
 - [11.18 Build success/failure notification action](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.18)
 - [11.19 Periodic health check](https://github.com/classroom-dee/full-stack-open-pokedex/tree/11.19)
-
+- [11.20 Your own pipeline](https://github.com/classroom-dee/color-ensemble/tree/main)
+- [11.21 Protect your main branch and ask for pull request](https://github.com/classroom-dee/color-ensemble/tree/main)
